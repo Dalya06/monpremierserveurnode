@@ -1,14 +1,31 @@
 // impoter le protocle http
 // require() permet d'importer le package (module)
 //ici le package importé est http
-const http = require('http');
+// import { createServer } from 'http';
+const http = require ("http");
+const app = require ('./app');
+
+const numPort = 3002;
+
+app.set("port", numPort);
+const server = http.createServer(app);
+
+// Récupèrez l'heure ici
+const date = new Date();
+
+server.listen(numPort, () => {
+    // Affichez l'heure
+
+    //console.log(`Le serveur est activité au port : ${numPort}`);
+    console.log(date.toLocaleDateString()," ",date.toLocaleTimeString());
+});
 //déclaration serveur en utilisant http
 // ici le package impoté est http
-const server = http.createServer(( req, res)=> {
-    res.end("Bonjour, Je suis le serveur.");
-});
+//const server = createServer(( req, res)=> {
+    //res.end("Bonjour, Je suis le serveur.");
+//});
 //le seveur est disponible sur le port 3000
-server.listen(3000)
+//server.listen(3000)
 
 
 // on va lancer le server !!
